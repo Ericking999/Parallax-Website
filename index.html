@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="探索這個互動的萬聖節派對專案，展示響應式設計、動畫與網頁開發技巧，沉浸在萬聖節的詭譎氛圍中。">
+        content="Explore the interactive Halloween Party project, showcasing responsive design, animations, and web development techniques. Immerse yourself in the spooky ambiance of Halloween.">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/logo.png">
 
     <!-- Page Title -->
-    <title>視差滾動網站</title>
+    <title>Parallax Scrolling Website</title>
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="style.css">
@@ -19,9 +19,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <!-- Open Graph meta tags for image sharing -->
-    <meta property="og:title" content="視差滾動網站">
+    <meta property="og:title" content="Parallax Scroll Site">
     <meta property="og:description"
-        content="探索這個互動的萬聖節派對專案，沉浸在詭譎的萬聖節氛圍中。">
+        content="Explore the interactive Halloween Party project and Immerse yourself in the spooky ambiance of Halloween.">
     <meta property="og:image" content="https://drive.google.com/uc?id=1GFbBHTi7w8weRVqLJ7bkofezEEGg4U30">
     <meta property="og:type" content=”website” />
     <!-- <meta property="og:url" content="https://parallax-website-by-vineet.netlify.app/"> -->
@@ -30,11 +30,11 @@
 <body>
     <!-- This is the header/ Nav Bar -->
     <header id="header">
-        <a href="#" class="logo">視差效果</a>
+        <a href="#" class="logo">Parallax</a>
         <ul>
-            <li><a href="#" class="active">首頁</a></li>
-            <li><a href="#sec">關於</a></li>
-            <li><a href="#footer">聯絡</a></li>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#sec">About</a></li>
+            <li><a href="#footer">Contact</a></li>
         </ul>
     </header>
 
@@ -44,11 +44,11 @@
         <img src="images/land/sun.png" id="sun">
         <img src="images/land/mountains.png" id="mountains" class="wallpaper">
         <img src="images/land/cloud.png" id="cloud">
-        <h2 id="text"><span>「擁抱」</span><br>探索的刺激</h2>
+        <h2 id="text"><span>"Embrace the Thrill of"</span><br>exploration</h2>
         <img src="images/land/forest.png" id="forest">
         <img src="images/land/bird1.png" id="bird1">
         <img src="images/land/bird2.png" id="bird2">
-        <a href="#sec" id="explore">探索更多</a>
+        <a href="#sec" id="林碩俊">林碩俊</a>
         <img src="images/land/rocks.png" id="rocks">
         <img src="images/land/splash.png" id="splash">
         <img src="images/land/water.png" id="water">
@@ -68,46 +68,65 @@
         <img src="images/sea/sea8.png" id="sea8" class="undersea">
 
         <!-- Text Content here -->
-        <h2>視差滾動效果</h2>
-        <div id="name">作者：Vineet Kumar</div>
+        <h2>Parallax Scrolling Effects</h2>
+        <div id="name">By Vineet Kumar</div>
 
         <br>
 
         <div class="glass">
-            <h3>什麼是視差滾動？</h3>
+            <h3>What is parallax scrolling?</h3>
             <p>
-                視差滾動是一種網頁設計技巧，讓背景以比前景更慢的速度移動，營造 3D 深度感，帶給訪客更沉浸的瀏覽體驗。
-                視差效果源自光學錯覺：因為我們的眼睛會將較近的物體看得比遠處更大，也就會覺得遠處的物體移動得較慢。
-                這種錯覺早已在不同媒介中被運用，形成逼真的效果，最早可以追溯到迪士尼《白雪公主與七矮人》等傳統動畫，
-                以及《超級瑪利歐》等遊戲。隨著 CSS 與 HTML 的進步，視差效果也逐漸演變成今日網頁設計常見的技術。
+                Parallax scrolling is a web design technique in which the website background moves at a slower pace than
+                the foreground. This results in a 3D effect as visitors scroll down the site, adding a sense of depth
+                and creating a more immersive browsing experience. Parallax is based on optical illusion.
+                Since the human eye perceives objects that are close to us as arger than things farther away,
+                we perceive distant objects as if they were moving more slowly. The illusion has been long adopted into
+                parallax across different mediums, fostering a realistic effect. Its first use was in traditional
+                animation,
+                dating back to as early as Disney's Snow White and the Seven Dwarfs, and in video games such as Super
+                Mario.
+                With advancements in CSS and HTML, parallax effects later evolved into the world of web design as we
+                know it today.
                 <br><br>
-                其中一個早期的視差滾動網頁實作，是開發者 Glutnix 在 2007 年於部落格分享的範例與示範，使用 JavaScript 和
-                CSS2，就能在當時的 IE6 等瀏覽器上運作。不過直到 2011 年、HTML5 與 CSS3 普及後，這項技巧才真正受到網頁設
-                計師歡迎。支持者認為，這是一種擁抱網頁流動性的簡單方法，可運用視差背景更好地吸引使用者並提升整體體
-                驗。然而，普渡大學在 2013 年的研究指出：雖然視差滾動增強了部分使用者體驗，但並不一定能提升整體使用者
-                滿意度。
+                One of the first implementations of parallax scrolling in the browser was created and shared in a blog
+                post by web developer Glutnix in 2007, this included example code and a demo using JavaScript and CSS 2
+                that supported Internet Explorer 6 and other browsers of that era. However, it wasn't until 2011 and the
+                introduction of HTML5 and CSS 3 coding that the technique became popular with Web designers. Advocates
+                argue it is a simple way to embrace the fluidity of the Web. Proponents use parallax backgrounds as a
+                tool to better engage users and improve the overall experience that a website provides. However, a
+                Purdue
+                University study, published in 2013, revealed the following findings: "... although parallax scrolling
+                enhanced certain aspects of the user experience, it did not necessarily improve the overall user
+                experience".
             </p>
         </div>
 
         <br>
 
         <div class="glass">
-            <h3>為什麼要使用視差圖像？</h3>
+            <h3>Why should I use parallax graphics?</h3>
             <ul>
-                <p>設計師應該嘗試視差圖像的兩大原因：</p>
+                <p>There are two main reasons why designers should try parallax graphics:</p>
                 <li>
-                    <h4>能幫助敘事</h4>
+                    <h4>It helps tell a story</h4>
                     <p>
-                        視差圖像非常適合講故事。好的設計重在溝通——設計網站時，我們希望向訪客傳達產品、服務或品牌的
-                        動人故事。視差滾動能讓訪客沉浸在獨特的線上體驗中，甚至可以打造單頁網站，讓讀者不用跳轉頁面就能
-                        一路閱讀完整故事。
+                        Parallax graphics are ideal for storytelling. Good design is all about communication—and when we
+                        design websites, we want to communicate with our visitors and tell a compelling story about our
+                        product, service, or brand. Parallax scrolling allows us to immerse our website visitors in
+                        unique online experiences. It's even possible to create a one-page website where visitors can
+                        read an entire story about your product or brand without navigating to multiple pages.
                     </p>
                 </li>
                 <li>
-                    <h4>有助提升互動</h4>
+                    <h4>It helps to improve user engagement</h4>
                     <p>
-                        視差圖像也能提升使用者互動。降低網站的跳出率是設計時的重要目標，因為高跳出率會影響搜尋排名。
-                        精心打造的視差頁面能帶來動態體驗，讓使用者更願意停留。
+                        Parallax graphics can be used to improve user engagement. Reducing your website’s bounce rate is
+                        one of the goals to be conscientious of in web design. Bounce rate measures the percentage of
+                        site visitors who either hit the “back” button or close the tab after checking just one page of
+                        your
+                        website. High bounce rates hurt your search ranking, so any actions you can take to bring that
+                        rate down are worthwhile. A well-crafted parallax page gives the user the type of dynamic
+                        experience that tends to keep them on the page longer.
                     </p>
                 </li>
             </ul>
@@ -116,26 +135,31 @@
         <br>
 
         <div class="glass">
-            <h3>想在網站加入視差滾動？可以參考以下建議：</h3>
+            <h3>If you want to add a parallax scrolling effect to your website, you should consider the following tips.
+            </h3>
             <ul>
                 <li aria-level="1">
-                    <h4>挑重點使用</h4>
+                    <h4>Use it selectively</h4>
                     <p>
-                        視差滾動用在特定元素時效果更好，不必所有頁面都套用。可以放在頁首或標題，或僅用在首頁，讓視差為
-                        設計加分，而非分散注意力。
+                        Parallax scrolling is much more powerful when you use it on one particular element as opposed
+                        to all pages and all the time. Use it in headers and titles, or maybe on your homepage only.
+                        You want parallax scrolling to strengthen your website's design, not distract users.
                     </p>
                 </li>
                 <li aria-level="1">
-                    <h4>壓縮圖片</h4>
+                    <h4>Image compression</h4>
                     <p>
-                        視差效果常會用到多種媒體與 CSS 形狀來營造深度。請壓縮圖片，避免檔案過大造成載入緩慢，影響效能。
+                        Parallax scrolling uses a variety of media files and CSS shapes to create a sense of depth.
+                        You don't want to compromise your web performance and user experience ith large image files that
+                        load too slowly.
                     </p>
                 </li>
                 <li aria-level="1">
-                    <h4>玩轉色彩</h4>
+                    <h4>Play with color</h4>
                     <p>
-                        視差滾動不只關乎前後景的圖片，色彩也很重要。背景可用較低彩度的色調，前景則運用鮮明色彩，營造更
-                        強的立體感。
+                        Parallax scrolling isn't just about the images in the foreground and background,
+                        but about color, too. You might use more desaturated tones in the background and
+                        more lively colors in the foreground to create an even greater sense of depth.
                     </p>
                 </li>
             </ul>
@@ -162,7 +186,7 @@
 
     <!-- Code for the footer -->
     <div class="footer" id="footer">
-        歡迎追蹤我的社群：
+        Do Follow Me On:
         <div class="wrapper">
             <div class="social-media">
                 <div class="icon">
@@ -186,10 +210,10 @@
                 <div class="icon">
                     <i class="fa-solid fa-link"></i>
                 </div>
-                <span>個人作品集</span>
+                <span>Portfolio</span>
             </div>
         </div>
-        <span>本網站由 Vineet Kumar 製作 ❤️<br>SSN 工程學院資工四年級</span>
+        <span>A website created by Vineet Kumar ❤️<br>IT 4th Yr at SSN College of Engineering</span>
     </div>
 
     <!-- The button to scroll back to top -->
