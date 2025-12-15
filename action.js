@@ -1,24 +1,57 @@
 // Select the class bubble
-time = document.getElementsByClassName('bubbles')[0];
-
-// padding values for desktop
-var fish2move = 100;
-var fish3move = 900;
-var fish4move = 1200;
+const time = document.getElementsByClassName('bubbles')[0];
 
 if (screen.width < 400) {
-
     //Change transformation duration and translatey for mobile view
-    time.style.setProperty('--transform-duration', '15s')
-    time.style.setProperty('--transform-y', '-700vh')
-
-    // padding values for mobile
-    fish2move = 1680;
-    fish3move = 3000;
-    fish4move = 4300;
+    time.style.setProperty('--transform-duration', '15s');
+    time.style.setProperty('--transform-y', '-700vh');
 }
 
+const swimArea = document.querySelector('.sec');
+const fishSettings = [
+    { element: document.getElementById('fish1'), speed: 0.35, amplitude: 12, frequency: 0.0025, direction: -1 },
+    { element: document.getElementById('fish2'), speed: 0.45, amplitude: 16, frequency: 0.0021, direction: 1 },
+    { element: document.getElementById('fish3'), speed: 0.4, amplitude: 14, frequency: 0.0018, direction: -1 },
+    { element: document.getElementById('fish4'), speed: 0.32, amplitude: 18, frequency: 0.0023, direction: 1 }
+];
 
+const seaBounds = swimArea.getBoundingClientRect();
+
+fishSettings.forEach((fish) => {
+    const rect = fish.element.getBoundingClientRect();
+    fish.x = rect.left - seaBounds.left;
+    fish.baseY = rect.top - seaBounds.top;
+    fish.offset = Math.random() * Math.PI * 2;
+    fish.element.style.left = `${fish.x}px`;
+    fish.element.style.top = `${fish.baseY}px`;
+    fish.element.style.right = 'auto';
+    fish.element.style.willChange = 'transform, left, top';
+});
+
+function animateFish(timestamp) {
+    const boundsWidth = swimArea.clientWidth;
+
+    fishSettings.forEach((fish) => {
+        fish.x += fish.speed * fish.direction;
+
+        if (fish.x > boundsWidth + 150) {
+            fish.direction = -1;
+        }
+
+        if (fish.x < -150) {
+            fish.direction = 1;
+        }
+
+        const wave = Math.sin(timestamp * fish.frequency + fish.offset) * fish.amplitude;
+        fish.element.style.left = `${fish.x}px`;
+        fish.element.style.top = `${fish.baseY + wave}px`;
+        fish.element.style.transform = `scaleX(${fish.direction === 1 ? 1 : -1})`;
+    });
+
+    requestAnimationFrame(animateFish);
+}
+
+requestAnimationFrame(animateFish);
 
 window.addEventListener('scroll', function () {
 
@@ -48,12 +81,6 @@ window.addEventListener('scroll', function () {
     if (value < 380) {
         splash.style.top = 20 + value * -0.3 + 'px';
     }
-
-    //Move fishes horizontally
-    fish1.style.right = (value - 100) * 1 + 'px';
-    fish2.style.left = (value - fish2move) * 1 + 'px';
-    fish3.style.right = (value - fish3move) * 1 + 'px';
-    fish4.style.left = (value - fish4move) * 1 + 'px';
 })
 
 
@@ -79,3 +106,4 @@ function openlink(x) {
         window.open("https://vineet-portfolio-site.netlify.app/", "_blank");
     }
 }
+
