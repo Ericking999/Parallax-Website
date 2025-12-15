@@ -1,5 +1,17 @@
 // Select the class bubble
 const time = document.getElementsByClassName('bubbles')[0];
+const text = document.getElementById('text');
+const cloud = document.getElementById('cloud');
+const bird1 = document.getElementById('bird1');
+const bird2 = document.getElementById('bird2');
+const explore = document.getElementById('林碩俊');
+const rocks = document.getElementById('rocks');
+const forest = document.getElementById('forest');
+const sky = document.getElementById('sky');
+const mountains = document.getElementById('mountains');
+const header = document.getElementById('header');
+const sun = document.getElementById('sun');
+const splash = document.getElementById('splash');
 
 if (screen.width < 400) {
     //Change transformation duration and translatey for mobile view
@@ -7,51 +19,64 @@ if (screen.width < 400) {
     time.style.setProperty('--transform-y', '-700vh');
 }
 
-const swimArea = document.querySelector('.sec');
-const fishSettings = [
-    { element: document.getElementById('fish1'), speed: 0.35, amplitude: 12, frequency: 0.0025, direction: -1 },
-    { element: document.getElementById('fish2'), speed: 0.45, amplitude: 16, frequency: 0.0021, direction: 1 },
-    { element: document.getElementById('fish3'), speed: 0.4, amplitude: 14, frequency: 0.0018, direction: -1 },
-    { element: document.getElementById('fish4'), speed: 0.32, amplitude: 18, frequency: 0.0023, direction: 1 }
-];
+function startFishSwim() {
+    const swimArea = document.querySelector('.sec');
+    if (!swimArea) return;
 
-const seaBounds = swimArea.getBoundingClientRect();
+    const seaBounds = swimArea.getBoundingClientRect();
+    const fishElements = [
+        document.getElementById('fish1'),
+        document.getElementById('fish2'),
+        document.getElementById('fish3'),
+        document.getElementById('fish4')
+    ].filter(Boolean);
 
-fishSettings.forEach((fish) => {
-    const rect = fish.element.getBoundingClientRect();
-    fish.x = rect.left - seaBounds.left;
-    fish.baseY = rect.top - seaBounds.top;
-    fish.offset = Math.random() * Math.PI * 2;
-    fish.element.style.left = `${fish.x}px`;
-    fish.element.style.top = `${fish.baseY}px`;
-    fish.element.style.right = 'auto';
-    fish.element.style.willChange = 'transform, left, top';
-});
+    const fishSettings = fishElements.map((element, index) => {
+        const rect = element.getBoundingClientRect();
+        const direction = Math.random() < 0.5 ? -1 : 1;
 
-function animateFish(timestamp) {
-    const boundsWidth = swimArea.clientWidth;
+        element.style.right = 'auto';
+        element.style.willChange = 'transform, left, top';
+        element.style.top = `${rect.top - seaBounds.top}px`;
 
-    fishSettings.forEach((fish) => {
-        fish.x += fish.speed * fish.direction;
-
-        if (fish.x > boundsWidth + 150) {
-            fish.direction = -1;
-        }
-
-        if (fish.x < -150) {
-            fish.direction = 1;
-        }
-
-        const wave = Math.sin(timestamp * fish.frequency + fish.offset) * fish.amplitude;
-        fish.element.style.left = `${fish.x}px`;
-        fish.element.style.top = `${fish.baseY + wave}px`;
-        fish.element.style.transform = `scaleX(${fish.direction === 1 ? 1 : -1})`;
+        return {
+            element,
+            x: rect.left - seaBounds.left,
+            speed: 0.4 + index * 0.05,
+            amplitude: 12 + index * 3,
+            frequency: 0.0018 + index * 0.0003,
+            direction,
+            offset: Math.random() * Math.PI * 2
+        };
     });
+
+    function animateFish(timestamp) {
+        const boundsWidth = swimArea.clientWidth;
+
+        fishSettings.forEach((fish) => {
+            fish.x += fish.speed * fish.direction;
+
+            // Wrap fish to the opposite side when they swim out of view
+            if (fish.direction === 1 && fish.x > boundsWidth + 120) {
+                fish.x = -120;
+            }
+
+            if (fish.direction === -1 && fish.x < -120) {
+                fish.x = boundsWidth + 120;
+            }
+
+            const wave = Math.sin(timestamp * fish.frequency + fish.offset) * fish.amplitude;
+            fish.element.style.left = `${fish.x}px`;
+            fish.element.style.transform = `translateY(${wave}px) scaleX(${fish.direction})`;
+        });
+
+        requestAnimationFrame(animateFish);
+    }
 
     requestAnimationFrame(animateFish);
 }
 
-requestAnimationFrame(animateFish);
+startFishSwim();
 
 window.addEventListener('scroll', function () {
 
