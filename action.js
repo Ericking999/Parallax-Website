@@ -6,6 +6,12 @@ var fish2move = 100;
 var fish3move = 900;
 var fish4move = 1200;
 
+// Capture initial fish positions to anchor vertical movement
+var fish1Start = parseFloat(getComputedStyle(fish1).top);
+var fish2Start = parseFloat(getComputedStyle(fish2).top);
+var fish3Start = parseFloat(getComputedStyle(fish3).top);
+var fish4Start = parseFloat(getComputedStyle(fish4).top);
+
 if (screen.width < 400) {
 
     //Change transformation duration and translatey for mobile view
@@ -49,12 +55,17 @@ window.addEventListener('scroll', function () {
         splash.style.top = 20 + value * -0.3 + 'px';
     }
 
-    //Move fishes horizontally
-    fish1.style.right = (value - 100) * 1 + 'px';
-    fish2.style.left = (value - fish2move) * 1 + 'px';
-    fish3.style.right = (value - fish3move) * 1 + 'px';
-    fish4.style.left = (value - fish4move) * 1 + 'px';
+    // Move fishes vertically from bottom to top
+    moveFishUpwards(fish1, fish1Start, 100, value);
+    moveFishUpwards(fish2, fish2Start, fish2move, value);
+    moveFishUpwards(fish3, fish3Start, fish3move, value);
+    moveFishUpwards(fish4, fish4Start, fish4move, value);
 })
+
+function moveFishUpwards(fish, baseTop, startOffset, currentScroll) {
+    const displacement = Math.max(0, currentScroll - startOffset);
+    fish.style.top = baseTop - displacement + 'px';
+}
 
 
 // Contains the link for all social media handles
